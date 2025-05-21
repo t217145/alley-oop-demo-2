@@ -1,0 +1,27 @@
+namespace: cyrusdemo
+
+appName: cyrusdemo
+
+containerArgs: []
+
+containers:
+  containerPort: 8080
+  imageRepository: alleyoopsandboxacr.azurecr.io/cyrusdemo
+  imageTag: latest
+  replicas: 1
+
+service:
+  type: LoadBalancer
+  port: 80
+
+secrets:
+  enabled: false
+  data:
+
+pvc:
+  enabled: true
+  accessMode: ReadWriteMany
+  size: 10Gi
+  storageClassName: azurefiles
+  mountPath: /data
+  shareName: alleyoopsbfileshare
